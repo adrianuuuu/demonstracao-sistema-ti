@@ -216,7 +216,7 @@ async function loadPage(path) {
 
 
             default:
-                pagePath = '/src/pages/dashboard.html';
+                pagePath = './src/pages/dashboard.html';
         }
     }
 
