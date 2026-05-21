@@ -3046,8 +3046,7 @@ async function initConfiguracoes() {
             localStorage.removeItem('token');
             localStorage.removeItem('usuario');
 
-            window.location.replace("./index.html");
-
+            window.location.href = "/demonstracao-sistema-ti/index.html";
         };
     }
 
@@ -3056,7 +3055,7 @@ async function initConfiguracoes() {
         const token = localStorage.getItem("token");
 
         if (!token && window.location.pathname.includes("index-sistema")) {
-            window.location.href = "./index.html";
+            window.location.href = "/demonstracao-sistema-ti/index.html";
         }
     });
 
