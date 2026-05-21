@@ -177,41 +177,41 @@ async function loadHeader(slot) {
 
 async function loadPage(path) {
     const mainArea = document.getElementById('main-area');
-    let pagePath = '/src/pages/dashboard.html';
+    let pagePath = './src/pages/dashboard.html';
 
     // 🔹 rota de detalhe do chamado
     if (path.startsWith('/chamados/')) {
-        pagePath = '/src/pages/chamado-detalhe.html';
+        pagePath = './src/pages/chamado-detalhe.html';
     }
     else if (path.startsWith('/equipamentos/')) {
-        pagePath = '/src/pages/equipamento-detalhe.html';
+        pagePath = './src/pages/equipamento-detalhe.html';
     }
     // 🔹 rotas normais
     else {
         switch (path) {
             case '/chamados':
-                pagePath = '/src/pages/chamados.html';
+                pagePath = './src/pages/chamados.html';
                 break;
             case '/inventario':
-                pagePath = '/src/pages/inventario.html';
+                pagePath = './src/pages/inventario.html';
                 break;
             case '/novo-chamado':
-                pagePath = '/src/pages/novo-chamado.html';
+                pagePath = './src/pages/novo-chamado.html';
                 break;
             case '/tutoriais':
-                pagePath = '/src/pages/tutoriais.html';
+                pagePath = './src/pages/tutoriais.html';
                 break;
             case '/usuarios':
-                pagePath = '/src/pages/usuarios.html';
+                pagePath = './src/pages/usuarios.html';
                 break;
             case '/configuracoes':
-                pagePath = '/src/pages/configuracoes.html';
+                pagePath = './src/pages/configuracoes.html';
                 break;
             case '/arquivados':
-                pagePath = '/src/pages/arquivados.html';
+                pagePath = './src/pages/arquivados.html';
                 break;
             case '/novo-equipamento':
-                pagePath = '/src/pages/novo-equipamento.html';
+                pagePath = './src/pages/novo-equipamento.html';
                 break;
 
 
