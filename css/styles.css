@@ -1700,7 +1700,7 @@ body.dark .fa-sun {
 ========================================================= */
 
 .login-page {
-  background-image: url('/assets/background-login.png');
+  background-image: url('../assets/background-login.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
