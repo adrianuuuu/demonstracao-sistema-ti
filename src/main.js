@@ -12,7 +12,7 @@ import { getAnotacoes, addAnotacao, removeAnotacao } from "./services/anotacoesS
 import { criarChamado } from "../js/mock/api.js";
 import { listarDepartamentos, listarEquipamentos } from "../js/mock/api.js";
 import { criarEquipamento } from "../js/mock/api.js";
-import { atualizarEquipamento, deletarEquipamento } from "../../js/mock/api.js";
+import { atualizarEquipamento, deletarEquipamento } from "../js/mock/api.js";
 import { getUsuarioLogado } from '../js/mock/api.js';
 
 
