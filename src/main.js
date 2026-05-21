@@ -111,7 +111,7 @@ async function loadLayout() {
         return;
     }
 
-    const sidebarHtml = await fetchText('/src/components/sidebar.html');
+    const sidebarHtml = await fetchText('./src/components/sidebar.html');
 
     // criar wrapper com a classe flex para garantir layout: sidebar + main
     const wrapper = document.createElement('div');
