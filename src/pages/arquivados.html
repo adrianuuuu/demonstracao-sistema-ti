@@ -1,0 +1,61 @@
+<div class="flex-1 min-h-screen">
+  <div id="header-slot"></div>
+
+  <main class="p-8">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-semibold">Chamados Arquivados</h2>
+
+      <a
+        href="#/chamados"
+        class="text-sm text-indigo-600 hover:text-indigo-800"
+      >
+        Voltar
+      </a>
+    </div>
+
+    <div id="lista-arquivados" class="space-y-4"></div>
+    <br>
+    <!-- PAGINAÇÃO -->
+<div
+  id="paginacao-arquivados"
+  class="flex items-center justify-between mt-8 border-t pt-4"
+>
+
+  <!-- BOTÃO VOLTAR -->
+  <button
+    id="btn-prev-arquivados"
+    class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
+  >
+    &lt; Anterior
+  </button>
+
+  <!-- SELECT DE ITENS POR PÁGINA -->
+  <div class="flex items-center gap-2 text-sm">
+    <span>Exibir</span>
+    <select
+      id="select-limit-arquivados"
+      class="border rounded-lg px-3 py-2"
+    >
+      <option value="5">5</option>
+      <option value="10" selected>10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+      <option value="50">50</option>
+    </select>
+    <span>por página</span>
+  </div>
+
+  <!-- BOTÃO AVANÇAR -->
+  <button
+    id="btn-next-arquivados"
+    class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
+  >
+    Próximo &gt;
+  </button>
+
+</div>
+
+  </main>
+</div>

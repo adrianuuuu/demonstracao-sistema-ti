@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Sistema TI</title>
+
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="login-page">
+
+  <div class="page">
+
+    <div class="login-wrapper">
+      <div class="login-left">
+        <div class="login-overlay"></div>
+        <div class="login-content">
+          <img class="banner" src="assets/Wallpaper2022 2.png" alt="Prefeitura de Maracanaú">
+          <h1>Central de TI</h1>
+          <p>Gestão de chamados e inventários</p>
+        </div>
+      </div>
+      <div class="login-right">
+        <div class="mobile-header">
+          <img src="assets/Wallpaper2022 2.png" alt="Prefeitura">
+          <h1>Central de TI</h1>
+          <p>Gestão de chamados e inventário</p>
+        </div>
+        <div class="login-box">
+          <h2>Login</h2>
+          <input type="text" id="usuario" placeholder="Nome de Usuário">
+          <input type="password" id="senha" placeholder="Sua senha">
+          <div id="primeiro-acesso-box" style="display:none; margin-top:10px;">
+            <input type="password" id="novaSenha" placeholder="Nova senha">
+            <input type="password" id="confirmarSenha" placeholder="Confirmar nova senha">
+          </div>
+          <button id="btnLogin">Login</button>
+          <br>
+          <!-- <p class="criar-conta">
+          Não tem conta? 
+          <a href="cadastro.html" class="criar">Crie a sua aqui</a>
+        </p> -->
+
+        <p style="margin-top: 12px; font-size: 13px; color: #9ca3af;">
+          ⚠️ Esta é uma versão para demonstração, todos os dados são fictícios e os novos serão excluídos ao recarregar a página.
+          <br><br>
+          Usuário: <b>programador</b><br>
+          Senha: <b>@123</b>
+        </p>
+        </div>
+        <footer>
+          <p>© 2026 Todos os direitos reservados.</p>
+          <p>Setor de TI | Secretaria de Infraestrutura, Mobilidade e Controle Urbano de Maracanaú.</p>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

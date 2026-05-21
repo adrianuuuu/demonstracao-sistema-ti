@@ -1,0 +1,62 @@
+<aside
+  id="sidebar"
+  class="sidebar h-screen w-64 text-white flex flex-col shrink-0"
+  style="background: var(--sidebar-bg);"
+>
+  <div class="px-6 py-7 flex items-center gap-3">
+    <div class="w-11 h-11 bg-blue-500 rounded flex items-center justify-center font-bold">
+      SI
+    </div>
+    <div>
+      <div class="font-bold text-lg">SEINFRA</div>
+      <div class="text-xs text-slate-200">Sistema de TI</div>
+    </div>
+  </div>
+
+  <nav class="mt-6 px-2 flex-1">
+    <ul class="space-y-1">
+      <a data-link href="#/dashboard" class="sidebar-link" data-menu="dashboard">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <a data-link href="#/chamados" class="sidebar-link" data-menu="chamados">
+        <i class="fa-solid fa-ticket"></i>
+        <span>Chamados</span>
+      </a>
+
+      <a data-link href="#/inventario" class="sidebar-link" data-menu="inventario">
+        <i class="fa-solid fa-desktop"></i>
+        <span>Inventário</span>
+      </a>
+
+      <!-- <a data-link href="#/usuarios" class="sidebar-link" data-menu="usuarios">
+        <i class="fa-solid fa-users"></i>
+        <span>Usuários</span>
+      </a> -->
+
+      <a data-link href="#/configuracoes" class="sidebar-link" data-menu="configuracoes">
+        <i class="fa-solid fa-gear"></i>
+        <span>Configurações</span>
+      </a>
+    </ul>
+  </nav>
+
+  <div class="px-4 py-6 text-slate-200">
+  <div class="flex items-center gap-3">
+
+    <div id="userAvatar"
+      class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">
+      --
+    </div>
+
+    <div>
+      <div id="userNome" class="text-white font-semibold">Carregando...</div>
+      <div id="userEmail" class="text-xs text-slate-300">...</div>
+      <div id="userExtra" class="text-xs text-slate-400"></div>
+    </div>
+
+  </div>
+</div>
+
+</aside>

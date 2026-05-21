@@ -1,0 +1,236 @@
+
+<div class="flex flex-col gap-6">
+
+   <div id="header-slot"></div>
+  <div class="grid grid-cols-3 gap-6 w-full min-w-0 overflow-hidden">
+
+    <!-- ================= COLUNA ESQUERDA ================= -->
+    <div class="col-span-2 space-y-6 min-w-0 overflow-hidden">
+
+      <!-- ===== PERFIL DO USUÁRIO ===== -->
+      <section class="bg-white p-6 rounded shadow">
+        <div class="flex items-start gap-4 mb-5">
+          <div class="icon-box bg-blue-soft text-blue-strong">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-800">
+              Perfil do Usuário
+            </h3>
+            <div class="text-sm text-slate-400">
+              Gerencie suas informações pessoais
+            </div>
+            
+          </div>
+        </div>
+        <br>
+
+        <div class="space-y-4">
+          <div>
+            <label class="text-sm text-slate-500">Nome completo</label>
+            <input
+              id="config-nome"
+              type="text"
+              class="input"
+            />
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">E-mail</label>
+            <input
+              id="config-email"
+              type="email"
+              class="input"
+            />
+          </div>
+
+          <!-- Código de validação de e-mail (oculto por padrão) -->
+          <div id="email-validacao" class="hidden space-y-2">
+            <div class="text-xs text-slate-500">
+              Por segurança, o código foi enviado para o email atualmente cadastrado na sua conta.
+              Digite-o abaixo para confirmar a alteração.
+            </div>
+            <label class="text-sm text-slate-500">
+              Código de validação
+            </label>
+            <input id="codigo-email" type="text" class="input"/>
+          </div>
+
+
+          <button
+            id="btn-salvar-dados"
+            class="btn-primary"
+          >
+            Salvar alterações
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== APARÊNCIA ===== -->
+     <section class="bg-white p-6 rounded shadow">
+      <div class="flex items-center justify-between">
+        <!-- ESQUERDA -->
+        <div class="flex items-start gap-4">
+          <div class="icon-box bg-purple-soft text-purple-strong">
+            <i class="fa-solid fa-sun"></i>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-slate-800">
+              Aparência
+            </h3>
+            <div class="text-sm text-slate-400">
+              Alterne entre o modo claro e escuro
+            </div>
+          </div>
+        </div>
+
+        <!-- DIREITA (TOGGLE + ICONES) -->
+        <div class="flex items-center gap-3">
+          <!-- sol -->
+          <i class="fa-solid fa-sun text-yellow-500 text-sm"></i>
+
+          <label class="switch">
+            <input type="checkbox" id="toggle-tema">
+            <span class="slider"></span>
+          </label>
+
+          <!-- lua -->
+          <i class="fa-solid fa-moon text-slate-600 text-sm"></i>
+        </div>
+      </div>
+    </section>
+
+
+      <!-- ===== SESSÃO ===== -->
+     <section class="bg-white p-6 rounded shadow">
+        <div class="flex items-center justify-between">
+          <!-- ESQUERDA -->
+          <div class="flex items-start gap-4">
+            <div class="icon-box bg-red-soft text-red-strong">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-800">
+                Encerrar sessão
+              </h3>
+              <div class="text-sm text-slate-400">
+                Saia da sua conta no sistema
+              </div>
+            </div>
+          </div>
+          <!-- DIREITA -->
+          <button id="btn-logout" class="btn-danger">
+            Sair do sistema
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= COLUNA DIREITA ================= -->
+    <div>
+
+      <!-- ===== SEGURANÇA / ALTERAR SENHA ===== -->
+      <section class="bg-white p-6 rounded shadow h-full ">
+       <div class="flex items-start gap-4 mb-5">
+        <div class="icon-box bg-yellow-soft text-yellow-strong">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-800">
+            Segurança
+          </h3>
+          <div class="text-sm text-slate-400">
+            Altere sua senha de acesso
+          </div>
+        </div>
+      </div>
+      <br>
+
+        <div class="space-y-4">
+          <div>
+            <label class="text-sm text-slate-500">
+              Senha atual
+            </label>
+            <div class="input-senha-wrapper">
+              <input id="senha-atual" type="password" class="input senha-input"
+              placeholder="Insira aqui sua senha de acesso"/>
+
+              <i class="fa-regular fa-eye ver-senha" data-target="senha-atual"></i>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">
+              Nova senha
+            </label>
+            <div class="input-senha-wrapper">
+              <input id="nova-senha" type="password" class="input senha-input"
+              placeholder="Insira aqui uma nova senha"/>
+
+              <i class="fa-regular fa-eye ver-senha" data-target="nova-senha"></i>
+            </div>
+            <div id="forca-senha-box" class="hidden mt-2">
+
+              <div class="w-full h-2 bg-slate-200 rounded overflow-hidden">
+                <div id="forca-barra"
+                  class="h-full transition-all duration-300"
+                  style="width:0%">
+                </div>
+              </div>
+
+              <div class="text-xs mt-2 space-y-1" id="requisitos-senha">
+
+                <div id="req-tamanho">• mínimo 6 caracteres</div>
+                <div id="req-maiuscula">• letra maiúscula</div>
+                <div id="req-minuscula">• letra minúscula</div>
+                <div id="req-numero">• número</div>
+                <div id="req-especial">• caractere especial</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">
+              Confirmar nova senha
+            </label>
+            <div class="input-senha-wrapper">
+              <input id="confirmar-senha" type="password" class="input senha-input"
+              placeholder="Repita aqui a sua nova senha"/>
+
+              <i class="fa-regular fa-eye ver-senha" data-target="confirmar-senha"></i>
+            </div>
+          </div>
+
+          <button
+            id="btn-alterar-senha"
+            class="btn-warning"
+          >
+            Alterar senha
+          </button>
+
+          <!-- Código de validação da senha (oculto por padrão) -->
+          <div id="senha-validacao" class="hidden space-y-4">
+            <label class="text-sm text-slate-500">
+              Código enviado por e-mail
+            </label>
+            <input
+              id="codigo-senha"
+              type="text"
+              class="input"
+            />
+
+            <button
+              id="btn-validar-senha"
+              class="btn-warning w-full"
+            >
+              Validar código
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="flex-1 min-h-screen">
+  <div id="header-slot"></div>
+  <br>
+
+  <main class="space-y-10">
+    <!-- FILTROS DO INVENTÁRIO -->
+<div class="flex flex-wrap gap-3 mb-6">
+
+    <!-- Busca -->
+    <input
+      id="search-inventario"
+      class="border rounded-lg px-4 py-2 text-sm w-64"
+      placeholder="Buscar por tombamento, nome ou usuário..."
+    />
+
+    <!-- Tipo -->
+    <select
+      id="filter-tipo-inventario"
+      class="border rounded-lg px-3 py-2 text-sm"
+    >
+      <option value="">Todos os tipos</option>
+      <option>Desktop</option>
+      <option>Notebook</option>
+      <option>Impressora</option>
+      <option>Telefone Ramal</option>
+    </select>
+
+    <!-- Status -->
+    <select
+      id="filter-status-inventario"
+      class="border rounded-lg px-3 py-2 text-sm"
+    >
+      <option value="">Todos os status</option>
+      <option>Ativo</option>
+      <option>Inativo</option>
+    </select>
+
+    <!-- Condição -->
+    <select
+      id="filter-condicao-inventario"
+      class="border rounded-lg px-3 py-2 text-sm"
+    >
+      <option value="">Todas as condições</option>
+      <option>Operacional</option>
+      <option>Manutenção</option>
+    </select>
+
+    <!-- Departamento -->
+    <select
+      id="filter-departamento-inventario"
+      class="border rounded-lg px-3 py-2 text-sm"
+    >
+      <option value="">Todos os departamentos</option>
+    </select>
+
+    <!-- Botão -->
+    <button
+      id="btn-filtrar-inventario"
+      class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-indigo-700 transition"
+    >
+      Filtrar
+    </button>
+
+  </div>
+
+
+    <!-- CONTAINER DOS DEPARTAMENTOS -->
+    <div id="inventario-container" class="space-y-16">
+      <!-- departamentos serão inseridos via JS -->
+    </div>
+
+  </main>
+</div>

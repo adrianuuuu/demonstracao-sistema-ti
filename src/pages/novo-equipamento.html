@@ -1,0 +1,130 @@
+<div class="flex-1 min-h-screen">
+  <div id="header-slot"></div>
+  
+
+  <main class="max-w-3xl mx-auto bg-white rounded-xl shadow p-8 mt-6">
+    <h2 class="text-xl font-semibold mb-6">Novo Equipamento</h2>
+
+    <form id="form-novo-equipamento" class="grid grid-cols-2 gap-6">
+
+      <!-- TIPO -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Tipo do equipamento *</label>
+        <select id="tipo-equipamento" class="w-full border rounded px-3 py-2">
+          <option value="">Selecione</option>
+          <option value="Desktop">Desktop</option>
+          <option value="Notebook">Notebook</option>
+          <option value="Impressora">Impressora</option>
+          <option value="Telefone Ramal">Telefone Ramal</option>
+        </select>
+      </div>
+
+      <!-- NOME -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Nome do equipamento</label>
+        <input id="nome-equipamento" type="text" class="w-full border rounded px-3 py-2" placeholder="Ex: sei-ti-256059">
+      </div>
+
+      <!-- TOMBAMENTO -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Tombamento/Serial *</label>
+        <input id="tombamento" type="text" class="w-full border rounded px-3 py-2" placeholder="Digite aqui o tombamento">
+      </div>
+
+      <!-- PROCESSADOR -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Processador *</label>
+        <input id="processador" type="text" class="w-full border rounded px-3 py-2" placeholder="Digite aqui qual o processador da máquina">
+      </div>
+
+      <!-- RAM -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Memória RAM *</label>
+        <input id="memoria-ram" type="text" class="w-full border rounded px-3 py-2" placeholder="Digite aqui quantos GB de RAM possui">
+      </div>
+
+      <!-- MEMÓRIA INTERNA -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Memória Interna *</label>
+        <input id="memoria-interna" type="text" class="w-full border rounded px-3 py-2" placeholder="Digite aqui quantos GB possui de memória">
+      </div>
+
+      <!-- ARMAZENAMENTO -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Tipo de armazenamento *</label>
+        <select id="tipo-armazenamento" class="w-full border rounded px-3 py-2">
+          <option value="">Selecione</option>
+          <option>HD</option>
+          <option>SSD</option>
+          <option>SSD NvME</option>
+        </select>
+      </div>
+
+      <!-- CONEXÃO -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Tipo de conexão *</label>
+        <select id="tipo-conexao" class="w-full border rounded px-3 py-2">
+          <option value="">Selecione</option>
+          <option>Wi-fi</option>
+          <option>Cabeado</option>
+        </select>
+      </div>
+
+      <!-- MAC -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Endereço MAC *</label>
+        <input id="mac-address" type="text" class="w-full border rounded px-3 py-2" placeholder="Digite aqui o MAC físico da máquina">
+      </div>
+
+      <!-- IP -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Endereço IP</label>
+        <input 
+          id="ip-address"
+          type="text"
+          class="w-full border rounded px-3 py-2"
+          placeholder="Digite aqui o endereço IP"
+          disabled
+        >
+      </div>
+
+      <!-- DEPARTAMENTO -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Departamento *</label>
+        <select id="select-departamentos" class="w-full border rounded px-3 py-2">
+          <option>Carregando...</option>
+        </select>
+      </div>
+
+        <div>
+        <label class="block text-sm font-medium mb-1">Número do Ramal</label>
+        <input 
+          id="numero-ramal"
+          type="text"
+          class="w-full border rounded px-3 py-2"
+          placeholder="Digite o número do ramal"
+          disabled
+        >
+      </div>
+
+      <!-- USUÁRIO -->
+      <div class="col-span-2">
+        <label class="block text-sm font-medium mb-1">Nome do usuário</label>
+        <input id="usuario-nome" type="text" class="w-full border rounded px-3 py-2" placeholder="Digite aqui quem é o Usuário do equipamento">
+      </div>
+
+    
+
+      <!-- BOTÃO -->
+      <div class="col-span-2 flex justify-end pt-4">
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-indigo-700 transition"
+        >
+          Salvar Equipamento
+        </button>
+      </div>
+
+    </form>
+  </main>
+</div>

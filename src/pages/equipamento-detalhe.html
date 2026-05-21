@@ -1,0 +1,212 @@
+<div class="max-w-[1800px] mx-auto px-8">
+
+  <!-- TÍTULO -->
+   <div class="flex justify-between items-start">
+     <div class="mb-6">
+       <h1 class="text-2xl font-semibold" id="equip-detalhe-titulo">
+         Detalhes do Equipamento
+       </h1>
+       <p class="text-slate-500 text-sm" id="equip-detalhe-subtitulo">
+         Carregando informações...
+       </p>
+      </div>
+
+      <button
+       onclick="history.back()"
+       class="px-4 py-2 border rounded-lg hover:bg-slate-100 text-sm"
+     >
+       Voltar
+     </button>
+   </div>
+  </div>
+   
+
+  <div class="grid grid-cols-3 gap-6">
+  
+  
+    <!-- BLOCO PRINCIPAL -->
+    <div class="col-span-2 space-y-6">
+
+
+      <div class="bg-white rounded-xl p-8 space-y-6 shadow">
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+
+
+          <div>
+            <div class="text-xs text-slate-500">Tipo</div>
+            <div class="font-medium" id="detalhe-tipo">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Tombamento/Serial</div>
+            <div class="font-medium" id="detalhe-tombamento">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Departamento</div>
+            <div class="font-medium" id="detalhe-departamento">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Processador</div>
+            <div class="font-medium" id="detalhe-processador">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Memória RAM</div>
+            <div class="font-medium" id="detalhe-ram">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Armazenamento</div>
+            <div class="font-medium" id="detalhe-armazenamento">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Tipo de Armazenamento</div>
+            <div class="font-medium" id="detalhe-armazenamento-tipo">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Endereço MAC</div>
+            <div class="font-medium" id="detalhe-mac">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Número do Ramal</div>
+            <div class="font-medium" id="detalhe-ramal">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Nome do Equipamento</div>
+            <div class="font-medium" id="detalhe-nome-equipamento">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Usuário</div>
+            <div class="font-medium" id="detalhe-usuario">-</div>
+          </div>
+
+          <div>
+            <div class="text-xs text-slate-500">Endereço IP</div>
+            <div class="font-medium" id="detalhe-ip">-</div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <!-- ===============================
+          ANEXOS DO EQUIPAMENTO
+      =============================== -->
+      <div class="mt-6 bg-white rounded-xl shadow p-4">
+        <h3 class="text-sm font-semibold mb-3 text-slate-700">
+          Anexos do Equipamento
+        </h3>
+
+        <!-- FORM UPLOAD -->
+        <form id="form-upload-equipamento" class="flex items-center gap-3">
+          <input
+            type="file"
+            id="input-arquivo-equipamento"
+            accept="image/png, image/jpeg"
+            class="text-sm"
+            required
+          />
+
+          <button
+            type="submit"
+            class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm hover:bg-indigo-700 transition"
+          >
+            Enviar
+          </button>
+        </form>
+
+        <!-- LISTAGEM -->
+        <div id="lista-arquivos-equipamento" class="mt-4 space-y-2">
+          <div class="text-sm text-slate-500">
+            Nenhum arquivo anexado.
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- BLOCO DE HISTÓRICO DO EQUIPAMENTO -->
+      <div class="bg-white rounded-xl p-8 mt-6 shadow">
+        <h3 class="font-medium mb-4">Histórico do Equipamento</h3>
+
+        <div id="historico-equipamento" class="space-y-3">
+          <div class="text-sm text-slate-500">
+            Carregando histórico...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASIDE (VAI SER USADO NO PRÓXIMO PASSO) -->
+   <div class="col-span-12 xl:col-span-4 space-y-6 w-full">
+
+
+  <div class="bg-white rounded-xl p-6 shadow space-y-4">
+
+    <h3 class="font-medium mb-2">Gerenciar Equipamento</h3>
+
+    <!-- CONEXÃO -->
+    <div>
+      <label class="text-xs text-slate-500">Conexão</label>
+      <select id="select-conexao" class="w-full mt-1 border rounded px-2 py-1 text-sm">
+        <option value="Wi-fi">Wi-fi</option>
+        <option value="Cabeado">Cabeado</option>
+      </select>
+    </div>
+
+    <!-- STATUS -->
+    <div>
+      <label class="text-xs text-slate-500">Status</label>
+      <select id="select-status-equip" class="w-full mt-1 border rounded px-2 py-1 text-sm">
+        <option value="Ativo">Ativo</option>
+        <option value="Inativo">Inativo</option>
+      </select>
+    </div>
+
+    <!-- CONDIÇÃO -->
+    <div>
+      <label class="text-xs text-slate-500">Condição</label>
+      <select id="select-condicao" class="w-full mt-1 border rounded px-2 py-1 text-sm">
+        <option value="Operacional">Operacional</option>
+        <option value="Manutenção">Manutenção</option>
+      </select>
+    </div>
+
+    <!-- MOVER PARA -->
+    <div>
+      <label class="text-xs text-slate-500">Mover para</label>
+      <select id="select-mover-departamento" class="w-full mt-1 border rounded px-2 py-1 text-sm">
+        <option value="">Carregando departamentos...</option>
+      </select>
+    </div>
+
+    <div class="flex gap-4 mt-8">
+      <button 
+      id="btn-salvar-equipamento" 
+      class="flex-1 bg-blue-500 text-white py-2 rounded-lg"
+      >
+        Salvar
+      </button>
+      <button 
+      id="btn-deletar-equipamento"
+      class="flex-1 bg-red-600 text-white py-2 rounded-lg"
+      >
+        Deletar
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+  </div>
+</div>

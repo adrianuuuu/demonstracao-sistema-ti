@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta | Sistema TI</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="cadastro-page">
+
+  <div class="cadastro-container">
+
+    <h1>Criar conta no Sistema de TI</h1>
+
+    <!-- CAMPOS -->
+    <div class="cadastro-grid">
+
+      <input type="text" id="nome" placeholder="Nome completo">
+
+      <input type="text" id="telefone" placeholder="Telefone">
+
+      <input type="text" id="matricula" placeholder="Matrícula">
+
+      <select id="departamento">
+        <option value="">Selecione o seu departamento</option>
+      </select>
+
+      <input type="email" id="email" placeholder="E-mail">
+
+    </div>
+
+    <!-- TERMO -->
+    <div class="termo-box" id="termoBox">
+
+      <h3>TERMO DE RESPONSABILIDADE E USO DO SISTEMA DE TI</h3>
+
+      <p>
+        Ao realizar meu cadastro e utilizar o Sistema de TI, declaro estar ciente e de acordo com as seguintes condições:
+      </p>
+
+      <p><strong>1. Acesso e Sigilo</strong><br>
+      Declaro que as credenciais de acesso ao sistema são pessoais e intransferíveis.</p>
+
+      <p><strong>2. Veracidade das Informações</strong><br>
+      Comprometo-me a fornecer informações verdadeiras e atualizadas.</p>
+
+      <p><strong>3. Uso Adequado do Sistema</strong><br>
+      O sistema deve ser utilizado apenas para fins profissionais.</p>
+
+      <p><strong>4. Segurança da Informação</strong><br>
+      Não compartilhar dados ou relatórios sem autorização.</p>
+
+      <p><strong>5. Responsabilidade</strong><br>
+      Todas as ações ficam vinculadas ao meu usuário.</p>
+
+      <p><strong>6. Monitoramento</strong><br>
+      O sistema poderá registrar logs e atividades.</p>
+
+      <p><strong>7. Penalidades</strong><br>
+      Uso indevido pode gerar bloqueio e sanções.</p>
+
+      <p><strong>8. Aceite</strong><br>
+      Ao prosseguir, declaro que li e aceito integralmente o termo.</p>
+    
+
+    </div>
+
+    <!-- CHECKBOX -->
+    <div class="checkbox-termo">
+      <input type="checkbox" id="aceite" disabled>
+      <label for="aceite">Li e aceito o termo de responsabilidade</label>
+    </div>
+
+    <!-- BOTÃO -->
+    <button id="btnEnviar" class="btn-enviar-cadastro" disabled>
+      Enviar cadastro
+    </button>
+
+  </div>
+
+  <script type="module" src="/src/cadastro.js"></script>
+
+</body>
+</html>
+```

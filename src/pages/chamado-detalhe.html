@@ -1,0 +1,212 @@
+<div class="flex flex-col gap-6">
+
+  <!-- TOPO -->
+  <div class="flex justify-between items-start">
+    <div>
+      <h1 class="text-2xl font-bold" id="detalhe-titulo">
+        Detalhes do Chamado
+      </h1>
+      <p class="text-slate-500 mt-1" id="detalhe-subtitulo"></p>
+    </div>
+
+    <button
+      onclick="history.back()"
+      class="px-4 py-2 border rounded-lg hover:bg-slate-100 text-sm"
+    >
+      Voltar
+    </button>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="grid grid-cols-3 gap-6 w-full min-w-0 overflow-hidden">
+
+
+    <!-- COLUNA ESQUERDA -->
+    <div class="col-span-2 space-y-6 min-w-0 overflow-hidden">
+
+
+      <!-- CARD DETALHES DO CHAMADO -->
+      <div
+        id="chamado-detalhe"
+        class="bg-white rounded-xl shadow p-6 space-y-6"
+      >
+
+        <!-- DESCRIÇÃO -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-700 mb-2">
+            Descrição do problema
+          </h3>
+          <p id="detalhe-descricao" class="text-slate-700 leading-relaxed">
+            —
+          </p>
+        </div>
+
+        <hr class="border-slate-200" />
+
+        <!-- DETALHES -->
+        <div class="grid grid-cols-2 gap-x-12 gap-y-6 text-sm">
+
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-user text-slate-400"></i>
+            <div>
+              <span class="text-slate-500 font-medium">Solicitante:</span>
+              <span id="detalhe-solicitante" class="font-medium"></span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-phone text-slate-400"></i>
+            <div>
+              <span class="text-slate-500 font-medium">Telefone:</span>
+              <span id="detalhe-telefone" class="font-medium"></span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-building text-slate-400"></i>
+            <div>
+              <span class="text-slate-500 font-medium">Departamento:</span>
+              <span id="detalhe-departamento" class="font-medium"></span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-calendar text-slate-400"></i>
+            <div>
+              <span class="text-slate-500 font-medium">Abertura:</span>
+              <span id="detalhe-abertura" class="font-medium"></span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-desktop text-slate-400"></i>
+            <div>
+              <span class="text-slate-500 font-medium">Tombamento:</span>
+              <span id="detalhe-tombamento" class="font-medium"></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+        <!-- ANOTAÇÕES DO CHAMADO -->
+      <div class="bg-white rounded-xl shadow p-6 space-y-4">
+
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold">Anotações</h3>
+
+          <button
+            id="btn-nova-anotacao"
+            class="text-sm px-3 py-1 border rounded-lg hover:bg-slate-100"
+          >
+            Escrever informação
+          </button>
+        </div>
+
+        <!-- FORMULÁRIO DE NOVA ANOTAÇÃO -->
+        <div id="form-anotacao" class="hidden space-y-3">
+          <textarea
+            id="input-anotacao"
+            class="w-full border rounded-lg p-3 text-sm"
+            rows="3"
+            placeholder="Digite a informação sobre o chamado..."
+          ></textarea>
+
+          <div class="flex gap-3">
+            <button
+              id="btn-salvar-anotacao"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700"
+            >
+              Salvar
+            </button>
+
+            <button
+              id="btn-cancelar-anotacao"
+              class="px-4 py-2 border rounded-lg text-sm"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+
+        <!-- LISTA DE ANOTAÇÕES -->
+        <div id="lista-anotacoes" class="space-y-3 text-sm w-full min-w-0"></div>
+
+      </div>
+
+
+    </div>
+
+    <!-- COLUNA DIREITA -->
+    <aside id="gerenciar-chamado" class="bg-white rounded-xl p-6 shadow-sm">
+
+      <h3 class="font-semibold text-slate-800 mb-4">
+        Gerenciar Chamado
+      </h3>
+
+      <!-- STATUS -->
+      <div class="space-y-1 mb-4">
+        <label class="text-xs text-slate-500 font-medium">Status</label>
+        <select id="select-status" class="w-full border rounded-lg px-3 py-2 text-sm">
+          <option>Aberto</option>
+          <option>Em Andamento</option>
+          <option>Resolvido</option>
+        </select>
+      </div>
+
+      <!-- PRIORIDADE -->
+      <div class="space-y-1 mb-4">
+        <label class="text-xs text-slate-500 font-medium">Prioridade</label>
+        <select id="select-prioridade" class="w-full border rounded-lg px-3 py-2 text-sm">
+          <option>Baixa</option>
+          <option>Média</option>
+          <option>Alta</option>
+          <option>Crítica</option>
+        </select>
+      </div>
+
+      <div class="space-y-1 mb-6">
+        <label class="text-xs text-slate-500 font-medium">Atribuir a</label>
+
+        <select
+          id="select-tecnico"
+          class="w-full border rounded-lg px-3 py-2 text-sm"
+        >
+          <option value="">Não atribuído</option>
+
+          <optgroup label="ANALISTAS">
+            <option value="1">Idalécio Diógenes</option>
+          </optgroup>
+
+          <optgroup label="TÉCNICOS">
+            <option value="2">Adriano Mesquita</option>
+            <option value="3">Bruna Paiva</option>
+            <option value="4">Wesley Sousa</option>
+          </optgroup>
+
+        </select>
+      </div>
+
+
+      <button id="btn-salvar-status"
+        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
+        Salvar Alterações
+      </button>
+      <br><br>
+
+      <div class="flex gap-4 mt-8">
+        <button id="btn-arquivar-chamado"
+          class="flex-1 bg-blue-500 text-white py-2 rounded-lg">
+          Arquivar
+        </button>
+        <button id="btn-apagar-chamado"
+          class="flex-1 bg-red-600 text-white py-2 rounded-lg">
+          Deletar
+        </button>
+      </div>
+
+    </aside>
+
+  </div>
+</div>

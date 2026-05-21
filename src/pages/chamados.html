@@ -1,0 +1,128 @@
+<div class="flex-1 min-h-screen">
+  <div id="header-slot"></div>
+
+  <main class="p-8">
+    <div class="bg-slate-50 mb-6">
+  <div class="flex flex-wrap gap-4 items-end justify-between">
+
+    <!-- Filtros -->
+    <div class="flex flex-wrap gap-3">
+
+      <!-- Busca -->
+      <input
+        id="search-chamados"
+        class="border rounded-lg px-4 py-2 text-sm w-64"
+        placeholder="Buscar por número ou descrição..."
+      />
+
+      <!-- Status -->
+      <select
+        id="filter-status"
+        class="border rounded-lg px-3 py-2 text-sm"
+      >
+        <option value="">Status</option>
+        <option>Aberto</option>
+        <option>Em Andamento</option>
+        <option>Resolvido</option>
+      </select>
+
+      <!-- Tipo -->
+      <select
+        id="filter-tipo"
+        class="border rounded-lg px-3 py-2 text-sm"
+      >
+        <option value="">Tipo</option>
+        <option>Hardware</option>
+        <option>Software</option>
+        <option>Rede</option>
+        <option>Impressora</option>
+      </select>
+
+      <select
+      id="filtro-tecnico"
+      class="border rounded-lg px-3 py-2 text-sm"
+    >
+      <option value="">Técnicos / Analistas</option>
+
+      <optgroup label="ANALISTAS">
+        <option value="1">Idalécio Diógenes</option>
+      </optgroup>
+
+      <optgroup label="TÉCNICOS">
+        <option value="2">Adriano Mesquita</option>
+        <option value="3">Bruna Paiva</option>
+        <option value="4">Wesley Sousa</option>
+      </optgroup>
+
+    </select>
+
+      <!-- Botão -->
+      <button
+        id="btn-filtrar"
+        class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-indigo-700 transition"
+      >
+        Filtrar
+      </button>
+
+    </div>
+        <div class="flex justify-end mb-4">
+          <a
+            href="#/arquivados"
+            class="text-sm text-indigo-600 hover:text-indigo-800 font-medium"
+          >
+            Ver chamados arquivados
+          </a>
+        </div>
+
+  </div>
+</div>
+
+
+    <div id="lista-chamados" class="space-y-4">
+      <div class="bg-white p-4 rounded shadow">Nenhum chamado carregado (exemplo)</div>
+    </div>
+    <br>
+    <!-- PAGINAÇÃO -->
+  <div
+    id="paginacao-chamados"
+    class="flex items-center justify-between mt-8 border-t pt-4"
+  >
+
+    <!-- BOTÃO VOLTAR -->
+    <button
+      id="btn-prev-chamados"
+      class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
+    >
+     &lt; Anterior
+    </button>
+
+    <!-- SELECT DE ITENS POR PÁGINA -->
+    <div class="flex items-center gap-2 text-sm">
+      <span>Exibir</span>
+      <select
+        id="select-limit-chamados"
+        class="border rounded-lg px-3 py-2"
+      >
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+      </select>
+      <span>por página</span>
+    </div>
+
+    <!-- BOTÃO AVANÇAR -->
+    <button
+      id="btn-next-chamados"
+      class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
+    >
+      Próximo &gt;
+    </button>
+
+  </div>
+
+  </main>
+</div>
