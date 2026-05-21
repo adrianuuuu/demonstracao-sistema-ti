@@ -171,7 +171,7 @@ function aplicarPermissoesUI() {
 }
 
 async function loadHeader(slot) {
-    const headerHtml = await fetchText('/src/components/header.html');
+    const headerHtml = await fetchText('./src/components/header.html');
     slot.innerHTML = headerHtml;
 }
 
