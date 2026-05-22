@@ -3229,7 +3229,7 @@ function updateHeaderByRoute(route) {
     // botão mobile
     if (btnMobile) {
         if (conf.button) {
-            btnMobile.style.display = 'inline-flex';
+            //btnMobile.style.display = 'inline-flex';
             btnMobile.textContent = conf.button.text;
             btnMobile.onclick = conf.button.action;
         } else {
