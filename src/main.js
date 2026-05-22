@@ -506,11 +506,18 @@ async function initNovoChamado() {
             tipo: document.getElementById('tipo-chamado').value,
             prioridade: document.getElementById('prioridade-chamado').value,
             descricao: document.getElementById('descricao-problema').value,
+
             solicitante_nome: "Usuário Demo",
+
+            // 🔥 ADICIONE ISSO
+            telefone_contato: document.getElementById('telefone-contato')?.value || null,
+            departamento_nome: document.getElementById('select-departamentos')?.selectedOptions[0]?.text || null,
+
+            equipamento_tombamento: document.getElementById('tombamento-equip')?.value || null,
+
             tecnico: null,
             arquivado: false,
-            created_at: new Date().toISOString(),
-            equipamento_tombamento: document.getElementById('tombamento-equip').value || null
+            created_at: new Date().toISOString()
         };
 
         try {

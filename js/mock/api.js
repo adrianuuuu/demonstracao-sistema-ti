@@ -398,52 +398,103 @@ const DB_INICIAL = {
     ],
 
     chamados: [
-        {
-            id: 1,
-            numero: "20260101001",
-            titulo: "Computador não liga",
-            status: "Aberto",
-            prioridade: "Alta",
-            tipo: "Hardware",
-            solicitante_nome: "João Silva",
-            tecnico: "Técnico 1",
-            arquivado: false
-        },
-        {
-            id: 2,
-            numero: "20260101002",
-            titulo: "Sistema lento",
-            status: "Em Andamento",
-            prioridade: "Média",
-            tipo: "Software",
-            solicitante_nome: "Maria Souza",
-            tecnico: "Técnico 2",
-            arquivado: false
-        },
-        {
-            id: 3,
-            numero: "20260101003",
-            titulo: "Sem internet",
-            status: "Resolvido",
-            prioridade: "Alta",
-            tipo: "Rede",
-            solicitante_nome: "Carlos Lima",
-            tecnico: "Técnico 3",
-            arquivado: false
-        },
-        {
-            id: 4,
-            numero: "20260101004",
-            titulo: "Impressora não funciona",
-            status: "Aberto",
-            prioridade: "Baixa",
-            tipo: "Hardware",
-            solicitante_nome: "Ana Paula",
-            tecnico: "Técnico 1",
-            arquivado: false
-        },
-         
-    ],
+    {
+        id: 1,
+        numero: "20260101001",
+        titulo: "Computador não liga",
+        descricao: "O computador não liga ao pressionar o botão de energia. Não apresenta sinais de funcionamento.",
+
+        status: "Aberto",
+        prioridade: "Alta",
+        tipo: "Hardware",
+
+        solicitante_nome: "João Silva",
+        telefone_contato: "85999999901",
+
+        departamento_id: 1,
+        departamento_nome: "Setor de TI",
+
+        equipamento_tombamento: "255975",
+
+        tecnico: "Analista 1",
+
+        created_at: new Date().toISOString(),
+
+        arquivado: false
+    },
+    {
+        id: 2,
+        numero: "20260101002",
+        titulo: "Sistema lento",
+        descricao: "O sistema apresenta lentidão ao abrir aplicações e executar tarefas básicas do dia a dia.",
+
+        status: "Em Andamento",
+        prioridade: "Média",
+        tipo: "Software",
+
+        solicitante_nome: "Maria Souza",
+        telefone_contato: "85999999902",
+
+        departamento_id: 2,
+        departamento_nome: "Setor Financeiro",
+
+        equipamento_tombamento: "255984",
+
+        tecnico: "Técnico 1",
+
+        created_at: new Date().toISOString(),
+
+        arquivado: false
+    },
+    {
+        id: 3,
+        numero: "20260101003",
+        titulo: "Sem internet",
+        descricao: "O equipamento não consegue acessar a rede. Sem conexão com a internet via Wi-Fi ou cabo.",
+
+        status: "Resolvido",
+        prioridade: "Alta",
+        tipo: "Rede",
+
+        solicitante_nome: "Carlos Lima",
+        telefone_contato: "85999999903",
+
+        departamento_id: 1,
+        departamento_nome: "Recursos Humanos",
+
+        equipamento_tombamento: "255980",
+
+        tecnico: "Tecnico 2",
+
+        created_at: new Date().toISOString(),
+
+        arquivado: false
+    },
+    {
+        id: 4,
+        numero: "20260101004",
+        titulo: "Impressora não funciona",
+        descricao: "A impressora não está respondendo aos comandos de impressão enviados pelo sistema.",
+
+        status: "Aberto",
+        prioridade: "Baixa",
+        tipo: "Hardware",
+
+        solicitante_nome: "Ana Paula",
+        telefone_contato: "85999999904",
+
+        departamento_id: 2,
+        departamento_nome: "Setor Financeiro",
+
+        equipamento_tombamento: "255976",
+
+        tecnico: "Tecnico 3",
+
+        created_at: new Date().toISOString(),
+
+        arquivado: false
+    }
+],
 
     anotacoes: [
         {
@@ -459,9 +510,9 @@ const DB_INICIAL = {
 export function getUsuarioLogado() {
     return {
         nome: "Administrador",
-        email: "emailFiciticio@email.com",
-        matricula: "50505",
-        departamento: "Tecnologia da Informação"
+        email: "emailficiticio@email.com",
+        matricula: "0001",
+        departamento: "Setor de TI"
     };
 }
 
