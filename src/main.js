@@ -3130,15 +3130,18 @@ async function initDashboard() {
 // HEADER DINÂMICO POR PÁGINA
 // ===============================
 function updateHeaderByRoute(route) {
+
     const titleEl = document.getElementById('page-title');
     const descEl = document.getElementById('page-description');
+
+    // 🔥 MOBILE
+    const titleMobile = document.getElementById('page-title-mobile');
+    const descMobile = document.getElementById('page-description-mobile');
+
     const btn = document.getElementById('btn-novo-chamado');
 
     if (!titleEl || !descEl) return;
 
-    // ===============================
-    // CONFIGURAÇÃO POR ROTA
-    // ===============================
     const map = {
         '/dashboard': {
             title: 'Dashboard',
@@ -3186,12 +3189,15 @@ function updateHeaderByRoute(route) {
         }
     };
 
-    // ===============================
-    // ROTA DETALHE DO CHAMADO
-    // ===============================
     if (route.startsWith('/chamados/')) {
-        titleEl.textContent = 'Detalhes do Chamado';
-        descEl.textContent = 'Informações completas e gerenciamento';
+        const title = 'Detalhes do Chamado';
+        const desc = 'Informações completas e gerenciamento';
+
+        titleEl.textContent = title;
+        descEl.textContent = desc;
+
+        if (titleMobile) titleMobile.textContent = title;
+        if (descMobile) descMobile.textContent = desc;
 
         if (btn) btn.style.display = 'none';
         return;
@@ -3199,12 +3205,15 @@ function updateHeaderByRoute(route) {
 
     const conf = map[route] || map['/dashboard'];
 
+    // 🔥 DESKTOP
     titleEl.textContent = conf.title;
     descEl.textContent = conf.desc;
 
-    // ===============================
-    // CONTROLE DO BOTÃO DO HEADER
-    // ===============================
+    // 🔥 MOBILE (AQUI ESTAVA O ERRO)
+    if (titleMobile) titleMobile.textContent = conf.title;
+    if (descMobile) descMobile.textContent = conf.desc;
+
+    // botão desktop
     if (btn) {
         if (conf.button) {
             btn.style.display = 'inline-flex';

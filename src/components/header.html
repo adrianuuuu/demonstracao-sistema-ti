@@ -1,11 +1,11 @@
 <header class="bg-slate-50 border-b px-8 py-6">
-   <div class="flex justify-between items-center gap-4">
-    
-    <div class="flex items-center gap-3">
-     <button id="btn-menu-mobile" class="text-xl md:hidden">
-      <i class="fa-solid fa-bars"></i>
-     </button>
 
+  <!-- =========================
+       DESKTOP
+  ========================= -->
+  <div class="header-desktop hidden md:flex justify-between items-center gap-4">
+
+    <div class="flex items-center gap-3">
       <div>
         <h1 id="page-title" class="text-3xl font-bold tracking-tight text-slate-800"></h1>
         <p id="page-description" class="text-slate-600 text-base mt-1"></p>
@@ -14,10 +14,53 @@
 
     <button
       id="btn-novo-chamado"
-      class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-indigo-700"
-    >
+      class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-indigo-700 transition">
       Novo Chamado
     </button>
-  </div>
-</header>
 
+  </div>
+
+  <!-- =========================
+       MOBILE (CORRIGIDO)
+  ========================= -->
+  <div class="header-mobile flex flex-col gap-2 md:hidden">
+
+    <!-- GRID 3 COLUNAS -->
+    <div class="grid grid-cols-3 items-center">
+
+      <!-- MENU (ESQUERDA) -->
+      <div class="flex justify-start">
+        <button id="btn-menu-mobile" class="text-xl">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- TÍTULO (CENTRO REAL) -->
+      <div class="flex justify-center">
+        <h1
+          id="page-title-mobile"
+          class="text-xl font-bold text-slate-800 text-center">
+        </h1>
+      </div>
+
+      <!-- ESPAÇO DIREITA (BALANCEAMENTO) -->
+      <div></div>
+
+    </div>
+
+    <!-- DESCRIÇÃO -->
+    <p
+      id="page-description-mobile"
+      class="text-slate-600 text-sm text-center leading-tight">
+    </p>
+
+    <!-- BOTÃO -->
+    <button
+      id="btn-novo-chamado-mobile"
+      class="w-full mt-3 px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-indigo-700 transition">
+      Novo Chamado
+    </button>
+
+  </div>
+
+</header>
