@@ -2499,20 +2499,16 @@ body.dark .modal-lembrete-icon {
     width: 100%;
   }
 
-  .header-mobile > .relative {
-    min-height: 72px;
-    justify-content: center;
+  .header-mobile .grid {
     align-items: center;
   }
 
   #btn-menu-mobile {
-    position: absolute;
-    left: 0 !important;
-    top: 0 !important;
+    position: static !important;
     transform: none !important;
     margin: 0 !important;
     padding: 0.5rem !important;
-    z-index: 1100;
+    z-index: 1;
   }
 
   #page-title-mobile {

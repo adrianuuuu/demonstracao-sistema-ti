@@ -3139,6 +3139,7 @@ function updateHeaderByRoute(route) {
     const descMobile = document.getElementById('page-description-mobile');
 
     const btn = document.getElementById('btn-novo-chamado');
+    const btnMobile = document.getElementById('btn-novo-chamado-mobile');
 
     if (!titleEl || !descEl) return;
 
@@ -3200,6 +3201,7 @@ function updateHeaderByRoute(route) {
         if (descMobile) descMobile.textContent = desc;
 
         if (btn) btn.style.display = 'none';
+        if (btnMobile) btnMobile.style.display = 'none';
         return;
     }
 
@@ -3221,6 +3223,17 @@ function updateHeaderByRoute(route) {
             btn.onclick = conf.button.action;
         } else {
             btn.style.display = 'none';
+        }
+    }
+
+    // botão mobile
+    if (btnMobile) {
+        if (conf.button) {
+            btnMobile.style.display = 'inline-flex';
+            btnMobile.textContent = conf.button.text;
+            btnMobile.onclick = conf.button.action;
+        } else {
+            btnMobile.style.display = 'none';
         }
     }
 }
