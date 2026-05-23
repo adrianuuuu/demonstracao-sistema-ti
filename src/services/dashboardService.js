@@ -40,7 +40,7 @@ export function getUltimosChamados() {
             status: c.status,
             prioridade: c.prioridade,
             solicitante_nome: c.solicitante_nome,
-            departamento: "TI"
+            departamento_nome: c.departamento_nome || c.departamento || 'Sem setor'
         }));
 }
 

@@ -806,7 +806,7 @@ async function loadUltimosChamados() {
 
       <div class="text-sm text-slate-500 truncate">
         ${chamado.solicitante_nome || 'Solicitante'}
-        • ${chamado.departamento || 'Sem setor'}
+        • ${chamado.departamento_nome || chamado.departamento || 'Sem setor'}
       </div>
     </div>
 
