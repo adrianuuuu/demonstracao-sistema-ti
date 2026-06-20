@@ -10,6 +10,7 @@ import { arquivar, restaurar } from "./services/chamadosService.js";
 import { removerChamado } from "./services/chamadosService.js";
 import { getAnotacoes, addAnotacao, removeAnotacao } from "./services/anotacoesService.js";
 import { criarChamado } from "../js/mock/api.js";
+import { listarArquivadosPorData, listarDiasComArquivados } from "../js/mock/api.js";
 import { listarDepartamentos, listarEquipamentos } from "../js/mock/api.js";
 import { criarEquipamento } from "../js/mock/api.js";
 import { atualizarEquipamento, deletarEquipamento } from "../js/mock/api.js";
@@ -843,42 +844,243 @@ async function loadUltimosChamados() {
 }
 
 // ===============================
-// CHAMADOS — ARQUIVADOS COM PAGINAÇÃO
+// CHAMADOS — ARQUIVADOS (CALENDÁRIO + LISTA POR DIA/MÊS) — MOCK
 // ===============================
 async function initArquivados() {
+    const grMeses = document.getElementById('arq-meses-grid');
+    const selectAno = document.getElementById('arq-select-ano');
     const lista = document.getElementById('lista-arquivados');
-    if (!lista) return;
+    if (!grMeses || !selectAno || !lista) return;
+
+    const NOMES_MESES = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+    const DIAS_SEMANA = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+
+    const hoje = new Date();
+    const anoHoje = hoje.getFullYear();
+    const mesHoje = hoje.getMonth();
+    const diaHoje = hoje.getDate();
+
+    let anoSelecionado = anoHoje;
+    let mesMobileAtivo = mesHoje;
+    let dataSelecionada = formatarDataISO(anoHoje, mesHoje, diaHoje);
+    let modoVisualizacao = 'dia';
+    let mesSelecionado = mesHoje;
+    let diasComChamados = new Set();
+
+    const layoutEl = document.querySelector('.arquivados-layout');
+    const radiosModo = document.querySelectorAll('input[name="arq-modo"]');
 
     const btnPrev = document.getElementById('btn-prev-arquivados');
     const btnNext = document.getElementById('btn-next-arquivados');
     const selectLimit = document.getElementById('select-limit-arquivados');
+    const labelDia = document.getElementById('arq-dia-selecionado-label');
+
+    const btnMesPrev = document.getElementById('arq-mes-prev');
+    const btnMesNext = document.getElementById('arq-mes-next');
+    const labelMesMobile = document.getElementById('arq-mes-atual-label');
 
     let paginaAtual = 1;
     let limiteSalvo = localStorage.getItem('limite-arquivados');
     let limite = limiteSalvo ? Number(limiteSalvo) : Number(selectLimit?.value || 10);
     let totalRegistros = 0;
 
-    // aplicar valor salvo no select
     if (selectLimit && limiteSalvo) {
         selectLimit.value = limiteSalvo;
     }
 
+    // carrega (mock) os dias do ano que têm arquivados
+    function carregarDiasComChamados() {
+        try {
+            diasComChamados = new Set(listarDiasComArquivados(anoSelecionado));
+        } catch (err) {
+            console.error('Erro ao carregar dias com arquivados:', err);
+            diasComChamados = new Set();
+        }
+    }
 
-    async function carregarArquivados() {
+    // ===== SELECT DE ANO (atual → +10) =====
+    selectAno.innerHTML = '';
+    for (let ano = anoHoje; ano <= anoHoje + 10; ano++) {
+        const opt = document.createElement('option');
+        opt.value = ano;
+        opt.textContent = ano;
+        selectAno.appendChild(opt);
+    }
+    selectAno.value = anoSelecionado;
+
+    selectAno.onchange = () => {
+        anoSelecionado = Number(selectAno.value);
+        mesMobileAtivo = (anoSelecionado === anoHoje) ? mesHoje : 0;
+        carregarDiasComChamados();
+        renderCalendario();
+    };
+
+    // ===== RENDER DO CALENDÁRIO =====
+    function renderCalendario() {
+        grMeses.innerHTML = '';
+
+        for (let mes = 0; mes < 12; mes++) {
+            const blocoMes = document.createElement('div');
+            blocoMes.className = 'arq-mes';
+            blocoMes.dataset.mes = mes;
+
+            if (mes === mesMobileAtivo) {
+                blocoMes.classList.add('mes-ativo-mobile');
+            }
+
+            const titulo = document.createElement('div');
+            titulo.className = 'arq-mes-titulo';
+            titulo.textContent = NOMES_MESES[mes];
+            blocoMes.appendChild(titulo);
+
+            const semana = document.createElement('div');
+            semana.className = 'arq-semana';
+            DIAS_SEMANA.forEach(d => {
+                const s = document.createElement('span');
+                s.textContent = d;
+                semana.appendChild(s);
+            });
+            blocoMes.appendChild(semana);
+
+            const grDias = document.createElement('div');
+            grDias.className = 'arq-dias';
+
+            const primeiroDia = new Date(anoSelecionado, mes, 1).getDay();
+            const totalDias = new Date(anoSelecionado, mes + 1, 0).getDate();
+
+            for (let i = 0; i < primeiroDia; i++) {
+                const vazio = document.createElement('div');
+                vazio.className = 'arq-dia vazio';
+                grDias.appendChild(vazio);
+            }
+
+            for (let dia = 1; dia <= totalDias; dia++) {
+                const cel = document.createElement('div');
+                cel.className = 'arq-dia';
+                cel.textContent = dia;
+
+                const dataISO = formatarDataISO(anoSelecionado, mes, dia);
+
+                if (diasComChamados.has(dataISO)) {
+                    cel.classList.add('tem-chamados');
+                }
+
+                if (anoSelecionado === anoHoje && mes === mesHoje && dia === diaHoje) {
+                    cel.classList.add('hoje');
+                }
+
+                if (dataISO === dataSelecionada) {
+                    cel.classList.add('selecionado');
+                }
+
+                cel.onclick = () => {
+                    if (modoVisualizacao === 'mes') return;
+
+                    dataSelecionada = dataISO;
+                    paginaAtual = 1;
+                    document.querySelectorAll('.arq-dia.selecionado')
+                        .forEach(el => el.classList.remove('selecionado'));
+                    cel.classList.add('selecionado');
+                    carregarArquivados();
+                };
+
+                grDias.appendChild(cel);
+            }
+
+            blocoMes.appendChild(grDias);
+
+            if (modoVisualizacao === 'mes' && mes === mesSelecionado) {
+                blocoMes.classList.add('mes-selecionado');
+            }
+
+            blocoMes.onclick = () => {
+                if (modoVisualizacao !== 'mes') return;
+
+                mesSelecionado = mes;
+                mesMobileAtivo = mes;
+                paginaAtual = 1;
+
+                document.querySelectorAll('.arq-mes.mes-selecionado')
+                    .forEach(el => el.classList.remove('mes-selecionado'));
+                blocoMes.classList.add('mes-selecionado');
+
+                carregarArquivados();
+            };
+
+            grMeses.appendChild(blocoMes);
+        }
+
+        atualizarLabelMesMobile();
+    }
+
+    // ===== NAVEGAÇÃO DE MÊS (MOBILE) =====
+    function aplicarMesAtivoMobile() {
+        document.querySelectorAll('.arq-meses-grid .arq-mes').forEach(bloco => {
+            bloco.classList.toggle(
+                'mes-ativo-mobile',
+                Number(bloco.dataset.mes) === mesMobileAtivo
+            );
+        });
+        atualizarLabelMesMobile();
+    }
+
+    function atualizarLabelMesMobile() {
+        if (labelMesMobile) {
+            labelMesMobile.textContent = `${NOMES_MESES[mesMobileAtivo]} ${anoSelecionado}`;
+        }
+    }
+
+    if (btnMesPrev) {
+        btnMesPrev.onclick = () => {
+            mesMobileAtivo = (mesMobileAtivo + 11) % 12;
+            aplicarMesAtivoMobile();
+        };
+    }
+
+    if (btnMesNext) {
+        btnMesNext.onclick = () => {
+            mesMobileAtivo = (mesMobileAtivo + 1) % 12;
+            aplicarMesAtivoMobile();
+        };
+    }
+
+    // ===== TROCA DE MODO (DIA / MÊS) =====
+    radiosModo.forEach(radio => {
+        radio.onchange = () => {
+            modoVisualizacao = radio.value;
+            if (layoutEl) {
+                layoutEl.classList.toggle('modo-mes', modoVisualizacao === 'mes');
+            }
+            paginaAtual = 1;
+            renderCalendario();
+            carregarArquivados();
+        };
+    });
+
+    // ===== CARREGAR CHAMADOS (DIA OU MÊS) — MOCK =====
+    function carregarArquivados() {
         lista.innerHTML = 'Carregando...';
 
-        const params = new URLSearchParams({
-            page: paginaAtual,
-            limit: limite
-        });
+        const opts = { page: paginaAtual, limit: limite };
+
+        if (modoVisualizacao === 'mes') {
+            const mm = String(mesSelecionado + 1).padStart(2, '0');
+            opts.mesAno = `${anoSelecionado}-${mm}`;
+            if (labelDia) {
+                labelDia.textContent = `Chamados de ${NOMES_MESES[mesSelecionado]} de ${anoSelecionado}`;
+            }
+        } else {
+            opts.data = dataSelecionada;
+            if (labelDia) {
+                labelDia.textContent = `Chamados de ${formatarDataBR(dataSelecionada)}`;
+            }
+        }
 
         try {
-            const json = getChamados({
-                page: paginaAtual,
-                limit: limite,
-                arquivado: true
-            });
-
+            const json = listarArquivadosPorData(opts);
             const data = json.data || [];
             totalRegistros = json.total || 0;
 
@@ -886,7 +1088,9 @@ async function initArquivados() {
 
             if (!data.length) {
                 lista.innerHTML =
-                    '<div class="p-4 bg-slate-50 rounded text-slate-500">Nenhum chamado arquivado.</div>';
+                    '<div class="p-4 bg-slate-50 rounded text-slate-500">Nenhum chamado arquivado neste período.</div>';
+                if (btnPrev) btnPrev.disabled = true;
+                if (btnNext) btnNext.disabled = true;
                 return;
             }
 
@@ -900,7 +1104,7 @@ async function initArquivados() {
              SEI/${c.numero} | ${c.titulo}
           </div>
           <div class="text-sm text-slate-500">
-            ${c.solicitante_nome} • ${c.tipo}
+            ${c.solicitante_nome || 'Solicitante'} • ${c.tipo || 'Não informado'}
           </div>
         `;
 
@@ -911,8 +1115,8 @@ async function initArquivados() {
                 lista.appendChild(el);
             });
 
-            btnPrev.disabled = paginaAtual <= 1;
-            btnNext.disabled = paginaAtual * limite >= totalRegistros;
+            if (btnPrev) btnPrev.disabled = paginaAtual <= 1;
+            if (btnNext) btnNext.disabled = paginaAtual * limite >= totalRegistros;
 
         } catch (error) {
             console.error(error);
@@ -921,6 +1125,7 @@ async function initArquivados() {
         }
     }
 
+    // ===== PAGINAÇÃO =====
     if (btnPrev) {
         btnPrev.onclick = () => {
             if (paginaAtual > 1) {
@@ -946,12 +1151,25 @@ async function initArquivados() {
             paginaAtual = 1;
             carregarArquivados();
         };
-
     }
 
+    // ===== HELPERS DE DATA =====
+    function formatarDataISO(ano, mes, dia) {
+        const mm = String(mes + 1).padStart(2, '0');
+        const dd = String(dia).padStart(2, '0');
+        return `${ano}-${mm}-${dd}`;
+    }
+
+    function formatarDataBR(iso) {
+        const [a, m, d] = iso.split('-');
+        return `${d}/${m}/${a}`;
+    }
+
+    // ===== INICIALIZAÇÃO =====
+    carregarDiasComChamados();
+    renderCalendario();
     carregarArquivados();
 }
-
 
 
 // ===============================

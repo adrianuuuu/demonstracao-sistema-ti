@@ -13,49 +13,102 @@
       </a>
     </div>
 
-    <div id="lista-arquivados" class="space-y-4"></div>
-    <br>
-    <!-- PAGINAÇÃO -->
-<div
-  id="paginacao-arquivados"
-  class="flex items-center justify-between mt-8 border-t pt-4"
->
+    <!-- LAYOUT: CALENDÁRIO (ESQUERDA) + LISTA (DIREITA) -->
+    <div class="arquivados-layout">
 
-  <!-- BOTÃO VOLTAR -->
-  <button
-    id="btn-prev-arquivados"
-    class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
-  >
-    &lt; Anterior
-  </button>
+      <!-- ===== CALENDÁRIO ===== -->
+      <section class="arq-calendario" id="arq-calendario">
 
-  <!-- SELECT DE ITENS POR PÁGINA -->
-  <div class="flex items-center gap-2 text-sm">
-    <span>Exibir</span>
-    <select
-      id="select-limit-arquivados"
-      class="border rounded-lg px-3 py-2"
-    >
-      <option value="5">5</option>
-      <option value="10" selected>10</option>
-      <option value="15">15</option>
-      <option value="20">20</option>
-      <option value="30">30</option>
-      <option value="40">40</option>
-      <option value="50">50</option>
-    </select>
-    <span>por página</span>
-  </div>
+     <!-- TOPO: seletor de ano + navegação de mês (mobile) -->
+        <div class="arq-cal-topo">
+          <div class="arq-ano-wrapper">
+            <label for="arq-select-ano" class="arq-ano-label">Ano</label>
+            <select id="arq-select-ano" class="arq-select-ano"></select>
+          </div>
 
-  <!-- BOTÃO AVANÇAR -->
-  <button
-    id="btn-next-arquivados"
-    class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
-  >
-    Próximo &gt;
-  </button>
+          <!-- navegação de mês (aparece só no mobile) -->
+          <div class="arq-mes-nav">
+            <button type="button" id="arq-mes-prev" aria-label="Mês anterior">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <span id="arq-mes-atual-label"></span>
+            <button type="button" id="arq-mes-next" aria-label="Próximo mês">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
 
-</div>
+        <!-- LEGENDA DAS BOLINHAS -->
+        <div class="arq-legenda">
+          <div class="arq-legenda-item">
+            <span class="arq-legenda-bolinha bolinha-tem-chamados"></span>
+            <span>Dias com chamados</span>
+          </div>
+          <div class="arq-legenda-item">
+            <span class="arq-legenda-bolinha bolinha-hoje"></span>
+            <span>Dia atual</span>
+          </div>
+        </div>
 
+        <!-- GRID DOS MESES (preenchido via JS) -->
+        <div class="arq-meses-grid" id="arq-meses-grid"></div>
+      </section>
+
+      <!-- ===== LISTA DE CHAMADOS DO DIA ===== -->
+      <section class="arq-lista-wrapper">
+       <div class="arq-lista-cabecalho">
+          <h3 id="arq-dia-selecionado-label">Chamados do dia</h3>
+
+          <div class="arq-modo-visualizacao">
+            <label class="arq-modo-opcao">
+              <input type="radio" name="arq-modo" value="dia" checked>
+              <span>Visualizar por dia</span>
+            </label>
+            <label class="arq-modo-opcao">
+              <input type="radio" name="arq-modo" value="mes">
+              <span>Visualizar por mês</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="lista-arquivados" class="space-y-4"></div><br>
+
+        <!-- PAGINAÇÃO -->
+        <div
+          id="paginacao-arquivados"
+          class="flex items-center justify-between mt-8 border-t pt-4"
+        >
+          <button
+            id="btn-prev-arquivados"
+            class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
+          >
+            &lt; Anterior
+          </button>
+
+          <div class="flex items-center gap-2 text-sm">
+            <span>Exibir</span>
+            <select
+              id="select-limit-arquivados"
+              class="border rounded-lg px-3 py-2"
+            >
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+            </select>
+            <span>por página</span>
+          </div>
+
+          <button
+            id="btn-next-arquivados"
+            class="px-3 py-2 border rounded-lg text-sm hover:bg-slate-100"
+          >
+            Próximo &gt;
+          </button>
+        </div>
+      </section>
+
+    </div>
   </main>
 </div>

@@ -470,7 +470,7 @@ const DB_INICIAL = {
 
         arquivado: false
     },
-    {
+{
         id: 4,
         numero: "20260101004",
         titulo: "Impressora não funciona",
@@ -493,6 +493,110 @@ const DB_INICIAL = {
         created_at: new Date().toISOString(),
 
         arquivado: false
+    },
+
+    // ===== CHAMADOS ARQUIVADOS DE EXEMPLO (datas variadas) =====
+    {
+        id: 101,
+        numero: "20260105001",
+        titulo: "PC não liga",
+        descricao: "Equipamento sem energia após queda de luz.",
+        status: "Resolvido",
+        prioridade: "Alta",
+        tipo: "Hardware",
+        solicitante_nome: "Daniele",
+        telefone_contato: "85999990001",
+        departamento_id: 1,
+        departamento_nome: "Setor de TI",
+        equipamento_tombamento: "255975",
+        tecnico: "Técnico 1",
+        created_at: "2026-01-05T10:00:00.000Z",
+        arquivado: true
+    },
+    {
+        id: 102,
+        numero: "20260105002",
+        titulo: "Troca de toner",
+        descricao: "Impressora solicitando substituição de toner.",
+        status: "Resolvido",
+        prioridade: "Baixa",
+        tipo: "Impressora",
+        solicitante_nome: "Marcelo",
+        telefone_contato: "85999990002",
+        departamento_id: 3,
+        departamento_nome: "Recursos Humanos",
+        equipamento_tombamento: "255994",
+        tecnico: "Técnico 2",
+        created_at: "2026-01-05T14:30:00.000Z",
+        arquivado: true
+    },
+    {
+        id: 103,
+        numero: "20260320001",
+        titulo: "Sistema travando",
+        descricao: "Aplicação fecha sozinha durante o uso.",
+        status: "Resolvido",
+        prioridade: "Média",
+        tipo: "Software",
+        solicitante_nome: "Camila",
+        telefone_contato: "85999990003",
+        departamento_id: 2,
+        departamento_nome: "Setor Financeiro",
+        equipamento_tombamento: "255983",
+        tecnico: "Analista 1",
+        created_at: "2026-03-20T09:15:00.000Z",
+        arquivado: true
+    },
+    {
+        id: 104,
+        numero: "20260610001",
+        titulo: "Sem acesso à rede",
+        descricao: "Computador não conecta ao Wi-Fi corporativo.",
+        status: "Resolvido",
+        prioridade: "Alta",
+        tipo: "Rede",
+        solicitante_nome: "Diego",
+        telefone_contato: "85999990004",
+        departamento_id: 3,
+        departamento_nome: "Recursos Humanos",
+        equipamento_tombamento: "255992",
+        tecnico: "Técnico 3",
+        created_at: "2026-06-10T11:00:00.000Z",
+        arquivado: true
+    },
+    {
+        id: 105,
+        numero: "20260610002",
+        titulo: "Configuração de e-mail",
+        descricao: "Necessário configurar conta de e-mail no Outlook.",
+        status: "Resolvido",
+        prioridade: "Baixa",
+        tipo: "Software",
+        solicitante_nome: "Francisca",
+        telefone_contato: "85999990005",
+        departamento_id: 2,
+        departamento_nome: "Setor Financeiro",
+        equipamento_tombamento: "255986",
+        tecnico: "Técnico 1",
+        created_at: "2026-06-10T16:45:00.000Z",
+        arquivado: true
+    },
+    {
+        id: 106,
+        numero: "20260625001",
+        titulo: "Mouse com defeito",
+        descricao: "Mouse não responde aos cliques.",
+        status: "Resolvido",
+        prioridade: "Baixa",
+        tipo: "Hardware",
+        solicitante_nome: "André",
+        telefone_contato: "85999990006",
+        departamento_id: 1,
+        departamento_nome: "Setor de TI",
+        equipamento_tombamento: "255989",
+        tecnico: "Técnico 2",
+        created_at: "2026-06-25T08:20:00.000Z",
+        arquivado: true
     }
 ],
 
@@ -769,4 +873,65 @@ export function listarChamadosComFiltros({
         data,
         total
     };
+}
+
+// ===============================
+// ARQUIVADOS — FILTRO POR DIA OU MÊS (MOCK)
+// data  = 'YYYY-MM-DD'  → filtra um dia
+// mesAno = 'YYYY-MM'    → filtra um mês inteiro
+// ===============================
+export function listarArquivadosPorData({
+    page = 1,
+    limit = 10,
+    data = "",
+    mesAno = ""
+} = {}) {
+    let chamados = getDB().chamados.filter(c => c.arquivado === true);
+
+    const extrairDiaISO = (iso) => {
+        const d = new Date(iso);
+        const ano = d.getFullYear();
+        const mes = String(d.getMonth() + 1).padStart(2, '0');
+        const dia = String(d.getDate()).padStart(2, '0');
+        return `${ano}-${mes}-${dia}`;
+    };
+
+    if (mesAno) {
+        chamados = chamados.filter(c => extrairDiaISO(c.created_at).startsWith(mesAno));
+    } else if (data) {
+        chamados = chamados.filter(c => extrairDiaISO(c.created_at) === data);
+    }
+
+    // ordena cronologicamente (mais antigo primeiro)
+    chamados.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
+    const total = chamados.length;
+    const inicio = (page - 1) * limit;
+    const fim = inicio + limit;
+
+    return {
+        data: chamados.slice(inicio, fim),
+        total
+    };
+}
+
+
+// ===============================
+// ARQUIVADOS — DIAS DO ANO QUE POSSUEM ARQUIVADOS (MOCK)
+// retorna ['YYYY-MM-DD', ...]
+// ===============================
+export function listarDiasComArquivados(ano) {
+    const chamados = getDB().chamados.filter(c => c.arquivado === true);
+
+    const dias = chamados
+        .map(c => {
+            const d = new Date(c.created_at);
+            const a = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const dia = String(d.getDate()).padStart(2, '0');
+            return `${a}-${m}-${dia}`;
+        })
+        .filter(iso => iso.startsWith(String(ano)));
+
+    return [...new Set(dias)];
 }

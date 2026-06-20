@@ -152,7 +152,7 @@ html,
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
   /* 3 */
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
@@ -197,7 +197,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /*
@@ -1353,7 +1353,7 @@ video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .preview-fallback {
@@ -2477,6 +2477,7 @@ body.dark .modal-lembrete-icon {
 ========================================= */
 
 /* por padrão (desktop) */
+
 .header-desktop {
   display: flex;
 }
@@ -2486,8 +2487,8 @@ body.dark .modal-lembrete-icon {
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
 
+@media (max-width: 768px) {
   .header-desktop {
     display: none !important;
   }
@@ -2518,7 +2519,8 @@ body.dark .modal-lembrete-icon {
   #page-description-mobile {
     font-size: 0.95rem !important;
     margin-top: 0.5rem;
-    margin-bottom: 1rem; /* distancia a descrição do botão */
+    margin-bottom: 1rem;
+    /* distancia a descrição do botão */
     padding-left: 0;
     padding-right: 0;
     width: 100%;
@@ -2572,7 +2574,6 @@ body.dark .modal-lembrete-icon {
   #form-upload-equipamento button {
     width: auto !important;
   }
-
 }
 
 /* =========================================
@@ -2709,4 +2710,1258 @@ body.dark .modal-lembrete-icon {
 .focus\:ring-indigo-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity, 1));
+}
+
+/* =========================================
+   CARD CHAMADO — LAYOUT BASE (DESKTOP)
+========================================= */
+
+.card-chamado-mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-chamado-mobile .card-esquerda {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-chamado-mobile .card-linha-topo {
+  font-weight: 600;
+  font-size: 14px;
+  word-break: break-word;
+  margin-bottom: 4px;
+}
+
+.card-chamado-mobile .card-linha-sub {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.card-chamado-mobile .card-direita {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   CARD CHAMADO — MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .card-chamado-mobile {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-chamado-mobile .card-direita {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .card-chamado-mobile .card-direita .badge-status,
+  .card-chamado-mobile .card-direita .badge-prioridade {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* .card-chamado-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .card-chamado-mobile .card-linha-topo {
+    font-weight: 600;
+    font-size: 14px;
+    word-break: break-word;
+  }
+
+  .card-chamado-mobile .card-linha-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  } */
+
+  /* PAGINAÇÃO FIXA NO FUNDO */
+
+  #paginacao-chamados,
+  #paginacao-arquivados {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    padding: 10px 16px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  body.dark #paginacao-chamados,
+  body.dark #paginacao-arquivados {
+    background: #0f172a;
+    border-top: 1px solid #1e293b;
+  }
+
+  #paginacao-chamados button,
+  #paginacao-arquivados button {
+    width: auto !important;
+    min-width: 80px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  #paginacao-chamados select,
+  #paginacao-arquivados select {
+    font-size: 13px;
+    padding: 6px 8px;
+    width: auto !important;
+  }
+
+  /* espaço para a paginação não cobrir o último item */
+
+  #lista-chamados,
+  #lista-arquivados {
+    padding-bottom: 72px;
+  }
+
+  /* DETALHE DO CHAMADO — TOPO */
+
+  .detalhe-chamado-topo-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .detalhe-chamado-topo-mobile .linha-numero-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  /* .detalhe-chamado-topo-mobile .linha-numero-btn span {
+    font-size: 13px;
+    color: #64748b;
+  }
+
+  .detalhe-chamado-topo-mobile .linha-numero-btn button {
+    width: auto !important;
+    min-width: unset;
+    padding: 6px 14px;
+    font-size: 13px;
+  } */
+
+  .detalhe-chamado-topo-mobile .linha-numero-btn span {
+    font-size: 16px;
+    color: #64748b;
+  }
+
+  .detalhe-chamado-topo-mobile .linha-numero-btn {
+    align-items: flex-start;
+  }
+
+  .detalhe-chamado-topo-mobile .linha-numero-btn button {
+    width: auto !important;
+    min-width: unset;
+    padding: 6px 14px;
+    font-size: 13px;
+    margin-top: 0;
+    align-self: flex-start;
+  }
+
+  .detalhe-chamado-topo-mobile h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* ANOTAÇÕES — reorganização */
+
+  .anotacao-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+  }
+
+  .anotacao-item .anotacao-texto {
+    font-size: 14px;
+    color: #334155;
+    word-break: break-word;
+  }
+
+  .anotacao-item .anotacao-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  .anotacao-item .anotacao-rodape .anotacao-autor {
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .anotacao-item .anotacao-rodape button {
+    width: auto !important;
+    min-width: unset;
+    color: #dc2626;
+    font-size: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  /* esconde topo desktop no mobile */
+
+  .detalhe-topo-desktop {
+    display: none !important;
+  }
+
+  /* esconde topo mobile no desktop */
+
+  /* (já controlado: detalhe-chamado-topo-mobile só aparece no mobile) */
+
+  /* CABEÇALHO DAS ANOTAÇÕES */
+
+  .bg-white .flex.justify-between.items-center {
+    gap: 12px;
+  }
+
+  #btn-nova-anotacao {
+    width: auto !important;
+    min-width: unset !important;
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 6px 10px;
+    flex-shrink: 0;
+  }
+}
+
+/* TOPO DESKTOP DO DETALHE: visível no desktop, oculto no mobile */
+
+.detalhe-topo-desktop {
+  display: flex;
+}
+
+/* TOPO MOBILE DO DETALHE: oculto no desktop */
+
+@media (min-width: 769px) {
+  .detalhe-chamado-topo-mobile {
+    display: none;
+  }
+}
+
+/* =========================================
+   ANOTAÇÕES — TEXTO MAIS EVIDENTE
+========================================= */
+
+.anotacao-item .anotacao-texto {
+  font-size: 14px;
+  color: #0f172a;
+  word-break: break-word;
+  font-weight: 500;
+}
+
+.anotacao-item .anotacao-rodape {
+  font-size: 12px;
+  color: #475569;
+}
+
+.anotacao-item .anotacao-rodape .anotacao-autor {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* DARK MODE */
+
+body.dark .anotacao-item {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .anotacao-item .anotacao-texto {
+  color: #f1f5f9;
+}
+
+body.dark .anotacao-item .anotacao-rodape {
+  color: #94a3b8;
+}
+
+body.dark .anotacao-item .anotacao-rodape .anotacao-autor {
+  color: #e2e8f0;
+}
+
+/* =========================================
+   INVENTÁRIO — LAYOUT MOBILE (ACCORDION)
+========================================= */
+
+/* por padrão (desktop) os elementos mobile não existem */
+
+.inv-mobile-dep {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* esconde o layout desktop (grid + gráficos lado a lado) */
+
+  .inv-desktop-layout {
+    display: none !important;
+  }
+
+  /* mostra o accordion mobile */
+
+  .inv-mobile-dep {
+    display: block;
+  }
+
+  /* ===== CABEÇALHO DO DEPARTAMENTO (linha clicável) ===== */
+
+  .inv-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .inv-mobile-header:hover {
+    background: #f8fafc;
+  }
+
+  .inv-mobile-header .inv-dep-info {
+    min-width: 0;
+  }
+
+  .inv-mobile-header .inv-dep-nome {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .inv-mobile-header .inv-dep-count {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  .inv-mobile-header .inv-dep-seta {
+    flex-shrink: 0;
+    color: #94a3b8;
+    transition: transform 0.25s ease;
+  }
+
+  /* seta girada quando aberto */
+
+  .inv-mobile-dep.aberto .inv-dep-seta {
+    transform: rotate(180deg);
+  }
+
+  /* ===== ÁREA EXPANSÍVEL ===== */
+
+  .inv-mobile-corpo {
+    display: none;
+    padding: 12px 4px 4px;
+  }
+
+  .inv-mobile-dep.aberto .inv-mobile-corpo {
+    display: block;
+  }
+
+  /* ===== LINHA DE EQUIPAMENTO ===== */
+
+  .inv-mobile-equip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .inv-mobile-equip:hover {
+    background: #cbd5e1;
+  }
+
+  .inv-mobile-equip .inv-equip-esq {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .inv-mobile-equip .inv-equip-texto {
+    font-size: 14px;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .inv-mobile-equip .inv-equip-icone {
+    flex-shrink: 0;
+    color: #475569;
+  }
+
+  .inv-mobile-equip .status-label {
+    flex-shrink: 0;
+  }
+
+  /* ===== PAGINAÇÃO MOBILE DENTRO DO DEPARTAMENTO ===== */
+
+  .inv-mobile-paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .inv-mobile-paginacao button {
+    width: auto !important;
+    min-width: 90px;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #334155;
+  }
+
+  .inv-mobile-paginacao button:disabled {
+    opacity: 0.5;
+  }
+
+  /* ===== GRÁFICOS (empilhados) ===== */
+
+  .inv-mobile-graficos {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .inv-mobile-graficos h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+  }
+
+  .inv-mobile-graficos .grafico-box {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  /* ===== DARK MODE ===== */
+
+  body.dark .inv-mobile-header {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  body.dark .inv-mobile-header:hover {
+    background: #243044;
+  }
+
+  body.dark .inv-mobile-header .inv-dep-nome {
+    color: #f1f5f9;
+  }
+
+  body.dark .inv-mobile-header .inv-dep-count {
+    color: #94a3b8;
+  }
+
+  body.dark .inv-mobile-equip {
+    background: #334155;
+  }
+
+  body.dark .inv-mobile-equip:hover {
+    background: #3e4c62;
+  }
+
+  body.dark .inv-mobile-equip .inv-equip-texto {
+    color: #f1f5f9;
+  }
+
+  body.dark .inv-mobile-graficos .grafico-box {
+    background: #1e293b;
+  }
+
+  /* cabeçalho desktop no mobile: esconde APENAS a contagem,
+     mantém o nome do departamento e o botão Deletar */
+
+  .inv-dep-count-desktop {
+    display: none !important;
+  }
+
+  /* cabeçalho mobile (card do accordion): esconde o nome,
+     deixa só a contagem em destaque */
+
+  .inv-mobile-header .inv-dep-nome {
+    display: none !important;
+  }
+
+  .inv-mobile-header .inv-dep-count {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+  }
+
+  body.dark .inv-mobile-header .inv-dep-count {
+    color: #f1f5f9;
+  }
+}
+
+/* =========================================
+   NOVO EQUIPAMENTO — LAYOUT MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  /* container do formulário: largura total, margens pequenas */
+
+  #form-novo-equipamento {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* o card branco que envolve o form */
+
+  main:has(#form-novo-equipamento) {
+    max-width: 100% !important;
+    margin: 12px 0 0 !important;
+    padding: 20px 16px !important;
+    border-radius: 14px;
+  }
+
+  /* cada campo ocupa a largura toda e ignora col-span-2 */
+
+  #form-novo-equipamento > div {
+    grid-column: auto !important;
+    width: 100%;
+  }
+
+  /* rótulos com leve respiro */
+
+  #form-novo-equipamento label {
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* inputs e selects: altura tocável e tipografia consistente */
+
+  #form-novo-equipamento input,
+  #form-novo-equipamento select {
+    width: 100%;
+    min-height: 46px;
+    font-size: 16px;
+  }
+
+  /* área do botão: largura total e separado dos campos */
+
+  #form-novo-equipamento > div:last-child {
+    justify-content: stretch !important;
+    padding-top: 8px !important;
+  }
+
+  #form-novo-equipamento button[type="submit"] {
+    width: 100% !important;
+    min-height: 48px;
+  }
+}
+
+/* =========================================
+   CONFIGURAÇÕES — CARDS INLINE NO MOBILE
+   (Aparência / Encerrar sessão)
+========================================= */
+
+@media (max-width: 768px) {
+  /* a linha texto+controle vira coluna: controle desce */
+
+  .config-card-row {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 22px;
+  }
+
+  /* o controle (switch / botão) centralizado, abaixo do texto */
+
+  .config-card-row > div:last-child,
+  .config-card-row > button:last-child {
+    justify-content: center;
+    align-self: center;
+  }
+
+  /* botão "Sair do sistema": largura total, conteúdo centralizado */
+
+  .config-card-row > button.btn-danger {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================
+   CONFIGURAÇÕES — APARÊNCIA (LINHA NO MOBILE)
+========================================= */
+
+@media (max-width: 768px) {
+  /* mantém texto à esquerda e switch à direita, sem espremer */
+
+  .config-card-aparencia {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* bloco de texto ocupa o espaço disponível */
+
+  .config-card-aparencia > div:first-child {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* o ícone mantém o tamanho fixo, nunca é comprimido */
+
+  .config-card-aparencia .icon-box {
+    flex-shrink: 0;
+  }
+
+  /* o switch nunca encolhe nem comprime o texto */
+
+  .config-card-aparencia > div:last-child {
+    flex-shrink: 0;
+  }
+}
+
+/* =========================================================
+   ARQUIVADOS — LAYOUT (CALENDÁRIO + LISTA)
+========================================================= */
+
+.arquivados-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* ===== CALENDÁRIO (CONTAINER) ===== */
+
+.arq-calendario {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.arq-cal-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+
+.arq-ano-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.arq-ano-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.arq-select-ano {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+/* navegação de mês: escondida no desktop */
+
+.arq-mes-nav {
+  display: none;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ===== GRID DOS 12 MESES (DESKTOP 3x4) ===== */
+
+.arq-meses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* cada mês (mini-calendário) */
+
+.arq-mes {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.arq-mes-titulo {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* cabeçalho dos dias da semana */
+
+.arq-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.arq-semana span {
+  font-size: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-align: center;
+}
+
+/* grade dos dias */
+
+.arq-dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+/* cada célula de dia */
+
+.arq-dia {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #334155;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 0;
+}
+
+/* dias fora do mês (preenchimento) */
+
+.arq-dia.vazio {
+  cursor: default;
+  color: transparent;
+}
+
+/* ===== EFEITO GRADE NO HOVER (estilo Windows 10) ===== */
+
+/* as linhas surgem ao redor da célula apontada pelo mouse */
+
+.arq-dia:not(.vazio)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  z-index: -1;
+}
+
+.arq-dia:not(.vazio):hover::before {
+  border-color: #cbd5e1;
+  background: #f1f5f9;
+}
+
+/* dia de hoje: bolinha azul com mais respiro ao redor do número */
+
+.arq-dia.hoje {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.arq-dia.hoje::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: #3b82f6;
+  border-radius: 999px;
+  z-index: -1;
+}
+
+/* dia selecionado (quando diferente de hoje) */
+
+.arq-dia.selecionado:not(.hoje)::before {
+  border-color: #3b82f6;
+  background: #dbeafe;
+}
+
+/* ===== LISTA DE CHAMADOS DO DIA ===== */
+
+.arq-lista-wrapper {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.arq-lista-cabecalho {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.arq-lista-cabecalho h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* cards menores nesta página (sobrescreve o padding padrão) */
+
+.arq-lista-wrapper #lista-arquivados > div {
+  padding: 12px 14px;
+}
+
+/* ===== DARK MODE ===== */
+
+body.dark .arq-calendario,
+body.dark .arq-lista-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .arq-ano-label {
+  color: #cbd5e1;
+}
+
+body.dark .arq-select-ano {
+  background: #020617;
+  border-color: #334155;
+  color: #e5e7eb;
+}
+
+body.dark .arq-mes {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+body.dark .arq-mes-titulo {
+  color: #f1f5f9;
+}
+
+body.dark .arq-dia {
+  color: #cbd5e1;
+}
+
+body.dark .arq-dia:not(.vazio):hover::before {
+  border-color: #475569;
+  background: #243044;
+}
+
+body.dark .arq-dia.selecionado:not(.hoje)::before {
+  border-color: #3b82f6;
+  background: #1e3a8a;
+}
+
+body.dark .arq-lista-cabecalho {
+  border-color: #334155;
+}
+
+body.dark .arq-lista-cabecalho h3 {
+  color: #f1f5f9;
+}
+
+/* =========================================================
+   ARQUIVADOS — MOBILE (só o mês atual + navegação)
+========================================================= */
+
+@media (max-width: 768px) {
+  /* empilha: calendário em cima, lista embaixo */
+
+  .arquivados-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* mostra a navegação de mês */
+
+  .arq-mes-nav {
+    display: flex;
+  }
+
+  .arq-mes-nav button {
+    width: auto !important;
+    min-height: unset;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #334155;
+    cursor: pointer;
+  }
+
+  #arq-mes-atual-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    min-width: 130px;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  /* o grid de 12 meses some; mostramos só 1 mês por vez */
+
+  .arq-meses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* esconde todos os meses, exceto o marcado como ativo */
+
+  .arq-meses-grid .arq-mes {
+    display: none;
+  }
+
+  .arq-meses-grid .arq-mes.mes-ativo-mobile {
+    display: block;
+  }
+
+  /* aumenta um pouco os dias no mobile (mais tocável) */
+
+  .arq-dia {
+    font-size: 14px;
+  }
+
+  .arq-semana span {
+    font-size: 12px;
+  }
+
+  body.dark .arq-mes-nav button {
+    background: #243044;
+    border-color: #334155;
+    color: #e5e7eb;
+  }
+
+  body.dark #arq-mes-atual-label {
+    color: #f1f5f9;
+  }
+}
+
+/* =========================================================
+   ARQUIVADOS — CORREÇÃO DE LARGURA/PADDING MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  /* trava overflow horizontal: nada pode ser mais largo que a tela */
+
+  main:has(.arquivados-layout) {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+  }
+
+  /* o layout em si não pode estourar */
+
+  .arquivados-layout {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* os dois cartões: largura total, box-sizing garante que o padding
+     não some à largura e estoure a tela */
+
+  .arq-calendario,
+  .arq-lista-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 16px;
+    margin: 0;
+  }
+
+  /* o grid de meses não pode ter largura mínima que empurre tudo */
+
+  .arq-meses-grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* o mês ativo: largura total do cartão, sem max-width que descentralize */
+
+  .arq-meses-grid .arq-mes.mes-ativo-mobile {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  /* topo do calendário (mobile): tudo empilhado e centralizado */
+
+  .arq-cal-topo {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* "Ano + select" centralizado */
+
+  .arq-ano-wrapper {
+    justify-content: center;
+  }
+
+  /* navegação de mês: setas + "Junho 2026" centralizados no meio */
+
+  .arq-mes-nav {
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  /* botões de seta: só o ícone, sem fundo nem borda */
+
+  .arq-mes-nav button {
+    width: auto !important;
+    min-height: unset;
+    padding: 4px 8px !important;
+    background: transparent !important;
+    border: none !important;
+    color: #475569;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.dark .arq-mes-nav button {
+    background: transparent !important;
+    border: none !important;
+    color: #cbd5e1;
+  }
+
+  /* rótulo do mês no centro, com largura confortável */
+
+  #arq-mes-atual-label {
+    min-width: 120px;
+  }
+
+  /* respiro: a lista não cola na paginação fixa do rodapé */
+
+  .arq-lista-wrapper {
+    margin-bottom: 90px;
+  }
+}
+
+/* =========================================================
+   ARQUIVADOS — SELETOR DE MODO (DIA / MÊS)
+========================================================= */
+
+.arq-modo-visualizacao {
+  display: flex;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.arq-modo-opcao {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #475569;
+  cursor: pointer;
+}
+
+.arq-modo-opcao input {
+  width: 16px;
+  height: 16px;
+  accent-color: #3b82f6;
+  cursor: pointer;
+}
+
+body.dark .arq-modo-opcao {
+  color: #cbd5e1;
+}
+
+/* ===== HOVER DE MÊS INTEIRO (modo "por mês") ===== */
+
+/* quando o calendário está em modo mês, o mini-calendário inteiro
+   reage ao hover e fica clicável como um bloco único */
+
+.arquivados-layout.modo-mes .arq-mes {
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.arquivados-layout.modo-mes .arq-mes:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+/* no modo mês, os dias não reagem individualmente */
+
+.arquivados-layout.modo-mes .arq-dia {
+  cursor: pointer;
+}
+
+.arquivados-layout.modo-mes .arq-dia:not(.vazio):hover::before {
+  border-color: transparent;
+  background: transparent;
+}
+
+/* mês selecionado no modo mês */
+
+.arquivados-layout.modo-mes .arq-mes.mes-selecionado {
+  border-color: #3b82f6;
+  background: #dbeafe;
+}
+
+/* dark mode */
+
+body.dark .arquivados-layout.modo-mes .arq-mes:hover {
+  border-color: #3b82f6;
+  background: #1e3a8a;
+}
+
+body.dark .arquivados-layout.modo-mes .arq-mes.mes-selecionado {
+  border-color: #3b82f6;
+  background: #1e3a8a;
+}
+
+/* =========================================================
+   ARQUIVADOS — BOLINHA "TEM CHAMADOS" + LEGENDA + BORDA MÊS
+========================================================= */
+
+/* dias que possuem arquivados: borda inferior (sublinhado) azul */
+
+.arq-dia.tem-chamados {
+  border-bottom: 2px solid #3b82f6;
+  border-radius: 0;
+}
+
+/* mantém o sublinhado mesmo no hover, sem o fundo de hover esconder */
+
+.arq-dia.tem-chamados:not(.vazio):hover::before {
+  border-radius: 4px;
+}
+
+/* ===== LEGENDA NO TOPO ===== */
+
+.arq-legenda {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.arq-legenda-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #475569;
+}
+
+.arq-legenda-bolinha {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.arq-legenda-bolinha.bolinha-tem-chamados {
+  background: transparent;
+  border-radius: 0;
+  width: 18px;
+  height: 0;
+  border-bottom: 2px solid #3b82f6;
+}
+
+.arq-legenda-bolinha.bolinha-hoje {
+  background: #3b82f6;
+}
+
+/* dark mode legenda */
+
+body.dark .arq-legenda-item {
+  color: #cbd5e1;
+}
+
+/* ===== ITEM 1: MÊS SELECIONADO COM BORDA (não preenchido) ===== */
+
+/* sobrescreve o preenchimento azul do Passo 7 por apenas borda */
+
+.arquivados-layout.modo-mes .arq-mes.mes-selecionado {
+  border-color: #3b82f6;
+  border-width: 2px;
+  background: #ffffff;
+}
+
+.arquivados-layout.modo-mes .arq-mes:hover {
+  border-color: #3b82f6;
+  border-width: 2px;
+  background: #ffffff;
+}
+
+/* dark mode: borda azul, fundo do tema escuro (sem preenchimento) */
+
+body.dark .arquivados-layout.modo-mes .arq-mes.mes-selecionado {
+  border-color: #3b82f6;
+  background: #0f172a;
+}
+
+body.dark .arquivados-layout.modo-mes .arq-mes:hover {
+  border-color: #3b82f6;
+  background: #0f172a;
 }
